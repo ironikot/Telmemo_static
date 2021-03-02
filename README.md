@@ -16,4 +16,8 @@ Telmemo is a tool that makes it easy to write phone notes. When you receive a ca
 <p>用件を書き終わりましたら、コピーするというボタンを押していただくと、クリップボードにコピーされます。</p>
 <p>その後、TeamsやLINE、メール等のソフトに貼り付けて使用してください。</p>
 
-<video src="video/about.mp4" alt="使い方" controls loop muted class="img-fluid"></video>
+## 使用方法詳細
+詳細は[こちら](https://www.telmemo.net/usage.html "こちら")
+
+## 使用例
+[こちら](https://www.telmemo.net/index.html "こちら")
