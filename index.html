@@ -1,0 +1,253 @@
+<! doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content ="width = device-width, initial-scale = 1, shrink-to-fit = no">
+    <link rel ="stylesheet" href ="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity ="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin ="anonymous">
+    <meta name="description" content="電話を受けたときにサクッとメッセージを書ける便利ツール。個人情報も残らないので安心して使えます">
+    <title>Tel memo</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <!-- SNS  -->
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+    <meta property="og:url" content="https://www.telmemo.net/index.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Telmemo" />
+    <meta property="og:description" content="Telmemo：電話を受ける時に、抜けなく簡単に伝言メモを作れるサイトです。" />
+    <meta property="og:site_name" content="Telmemo" />
+    <meta property="og:image" content="https://www.telmemo.net/images/ogp_image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+ 
+</head>
+<body>
+    <div id="fix-footer">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src ="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity ="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin ="anonymous"></script><script src ="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity ="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin ="anonymous"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <header>
+            <div class="container text-center">
+                <h1 class="title">Telmemo1.1</h1>
+                <p class="title">電話のメモをサクッと作ってコピーできる便利ツール</p>
+            </div>
+        </header>
+        <!--navigation -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <!--sub component -->
+            <div class="container">
+                <!--brand -->
+                <a class="navbar-brand" href="index.html">Telmemo</a>
+                <!--切替ボタン -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+                    <!--ハンバーガーアイコン -->
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-content">
+                    <ul class="navbar-nav nab-tabs mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" id="index" href="index.html">Top<span class="sr-only">(current)</span> </a>
+                        </li>
+           
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    <main>
+        <div class="py-3">
+            <div class="container">
+                <form>
+                    <div class="form-group row mb-1">
+                        <label class="col-md-3 col-form-label">誰へ？</label>
+                        <div class="col-md-8">
+                            <input class="form-control input" type="text" name="name" id="toName" placeholder="田中　太郎">
+                        </div>
+                        <div class="col-md-1">
+                            <p>さんへ</p>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-1">
+                        <label class="col-md-3 col-form-label">誰から電話？</label>
+                        <div class="col-md-8">
+                            <input class="form-control input" type="text" name="name" id="callFromName" placeholder="鈴木　太郎" >
+                        </div>
+                        <div class="col-md-1">
+                            <p>様から</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-3 mb-1" >時間</label>
+                        <div class="col-md-9 input mb-1" id="callDate"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-1">
+                            <input type="checkbox" name="subject" id="plsCallBack" placeholder="012-3456-7890">
+                            <label class="form-check-label" for="plsCallBack">電話をいただきたい</label>
+                        </div>
+                        <div class="col-md-8 mb-1 ">
+                            <label class="form-check-label" for="callBackTelNum">Tel :</label>
+                            <input  type="tel" name="subject" id="callBackTelNum" placeholder="012-3456-7890">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-1">
+                            <input type="checkbox" name="subject" id="callBackAgain" value="callBackAgain">
+                            <label class="form-check-label" for="callBackAgain">もう一度電話します（日時：</label>
+                        </div>
+                        <div class="col-md-8 mb-1">
+                            <input type="date"  name="subject" id="selectdate-day" pattern="\d{4}-\d{2}-\d{2}" >
+                            <label class="form-check-label" for="selectdate-day">日の</label>
+
+                            <select  name="subject" id="selectedate-h">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                        </select>
+                            <label for="selectedate-h">時</label>
+                            <select name="subject" id="selectedate-m">
+                              <option value="00">00</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                              <option value="13">13</option>
+                              <option value="14">14</option>
+                              <option value="15">15</option>
+                              <option value="16">16</option>
+                              <option value="17">17</option>
+                              <option value="18">18</option>
+                              <option value="19">19</option>
+                              <option value="20">20</option>
+                              <option value="21">21</option>
+                              <option value="22">22</option>
+                              <option value="23">23</option>
+                              <option value="24">24</option>
+                              <option value="25">25</option>
+                              <option value="26">26</option>
+                              <option value="27">27</option>
+                              <option value="28">28</option>
+                              <option value="29">29</option>
+                              <option value="30">30</option>
+                              <option value="31">31</option>
+                              <option value="32">32</option>
+                              <option value="33">33</option>
+                              <option value="34">34</option>
+                              <option value="35">35</option>
+                              <option value="36">36</option>
+                              <option value="37">37</option>
+                              <option value="38">38</option>
+                              <option value="39">39</option>
+                              <option value="40">40</option>
+                              <option value="41">41</option>
+                              <option value="42">42</option>
+                              <option value="43">43</option>
+                              <option value="44">44</option>
+                              <option value="45">45</option>
+                              <option value="46">46</option>
+                              <option value="47">47</option>
+                              <option value="48">48</option>
+                              <option value="49">49</option>
+                              <option value="50">50</option>
+                              <option value="51">51</option>
+                              <option value="52">52</option>
+                              <option value="53">53</option>
+                              <option value="54">54</option>
+                              <option value="55">55</option>
+                              <option value="56">56</option>
+                              <option value="57">57</option>
+                              <option value="58">58</option>
+                              <option value="59">59</option>
+                            </select>
+                            <label for="selectedate-m">分頃</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-1">
+                            <input type="checkbox" name="subject" id="plsCome" value="来ていただきたい">
+                            <label for="plsCome">来ていただきたい</label>
+                        </div>
+                        <div class="col-md-8 mb-1">
+                            <input type="text" id="plsComeHere" name="plsComeHere" placeholder="場所">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-1">
+                           <label><input type="checkbox" name="subject" id="visitAgain" value="visitAgain">もう一度訪問します</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 mb-1" for="callReason">要件は下記のとおりです。</label>
+                        <div class="col-md-9 mb-1 ">
+                            <textarea class="form-control" id="callReason" rows="5"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="form-control">
+                        <div class="row">
+                        <div class="col-md-3 mb-1">
+                            <p>メッセージ欄</p>
+                        </div>
+                        <div class="col-md-9 mb-1 message_box form-control">
+                            <p class="message_item" id="toNameTarget" ></p>
+                            <p class="message_item" id="callFromNameTarget" style="border:none; overflow:hidden"></p>
+                            <p class="message_item" id="checkBoxContent" ></p>
+                            <p class="message_item" id="callReasonMessage" ></p>
+                            <textarea  id="message_all" style="border:none; overflow:hidden"></textarea>
+                        </div>
+                    </div>
+                   <button id="copyButton" type="button" class="btn btn-primary btn-block mb-1" >コピーする！</button>
+                   <div id="copyResultParent" class="mb-3">
+                       <div id="copyResult" role="alert"></div>
+                   </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="js/script.js"></script>
+        <footer class="py-1 bg-dark text-light">
+            <div class="container text-center">
+                <ul class="nav justify-content-center mb-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Top</a>
+                    </li>
+
+                </ul>
+                <p><small>Copyright &copy;2020 Telmemo, All Rights Reserved.</small></p>
+            </div>
+
+        </footer>
+
+    </div>
+</body>
+
+</html>
